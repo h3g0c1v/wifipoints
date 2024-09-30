@@ -98,6 +98,13 @@ If someone has earned points, the output will change as follows:
 
 ![image](https://github.com/user-attachments/assets/3048b2cb-6417-4d09-8495-4ff6d356cdbb)
 
+# Creating and compressing log backups
+In order to avoid storing multiple files in the backup folders, there is a `.bat` script that takes care of compressing each `.txt` file of each backup folder and compressing it into a `.zip` file.
+
+```CMD
+management\compressBackups.bat
+```
+
 # Ranking
 To see the points ranking, we must run the script `leaderboard\GenerateLeaderBoard.py` to generate the file `leaderboard.html` in which we will visualize the ranking:
 
