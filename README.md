@@ -1,4 +1,4 @@
-# Wi-Fi point system
+# Wi-Fi Point System
 This tool is a Python3 script designed to reward users who connect to a Wi-Fi network by automatically granting points based on their interactions with the network. The system detects and registers connected devices, associating each device with the corresponding player and updating their score according to their activity on the network.
 
 **IMPORTANT NOTE** ➜ This tool is designed for Movistar routers that feature a Network Map section.
@@ -12,31 +12,31 @@ The following components are required for the correct operation of the script:
 - [Python3](https://www.python.org/downloads/) installed.
 
 # Installing
-Primeramente, instalaremos el repositorio 
+First, we will install the repository.
 
 ```CMD
 git clone https://github.com/h3g0c1v/wifipoints.git
 cd wifipoints
 ```
 
-Ahora tendremos que crear la BBDD `wifipoints` por lo que nos iremos a nuestro MySQL (`mysql -u root -p`) y crearemos la siguiente BD.
+Now we will have to create the `wifipoints` DB so we will go to our MySQL (`mysql -u root -p`) and create the following DB.
 
 ```sql
 CREATE DATABASE wifipoints;
 USE wifipoints;
 ```
 
-Por defecto, crearemos el usuario *wifipointsmanager* que se encargará de administrar la BD `wifipoints`, sin embargo, podremos crearlo con el nombre que deseemos pero nos debemos de asegurar de cambiar los valores en el script `InterfaceConnect.py`.
+By default, we will create the user *wifipointsmanager* that will be in charge of managing the `wifipoints` DB, however, we can create it with the name we want but we must make sure to change the values in the `InterfaceConnect.py` script.
 
 ```sql
--- Cambiar el nombre de usuario y contraseña al que queramos --
+-- Change the user name and password to the one you want --
 CREATE USER wifipointsmanager IDENTIFIED BY 'CONTRASEÑA' GRANT ALL ON wifipoints.*;
 ```
 
-Por último generaremos las tablas correspondientes en la BD `wifipoints`.
+Finally, we will generate the corresponding tables in the `wifipoints` database.
 
 ```sql
--- Tabla donde estarán los jugadores --
+-- Table where the players will be --
 CREATE TABLE players (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
     name VARCHAR(11),
@@ -44,7 +44,7 @@ CREATE TABLE players (
 );
 ```
 ```sql
--- Tabla que almancena los puntos de los jugadores --
+-- Table storing the players' points --
 CREATE TABLE players_points (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
 	name VARCHAR(11),
@@ -53,17 +53,19 @@ CREATE TABLE players_points (
 );
 ```
 
-Sobre la tabla `players` deberemos de introducir los datos de los jugadores que van a participar. Los siguientes son datos de ejemplo:
+On the `players` table we must enter the data of the players that will participate. The following are example data:
 
 ```sql
--- Insertando datos de ejemplo --
+-- Inserting sample data --
 INSERT INTO players VALUES ('Mama', 'Marta', '11:11:11:11:11:11');
 INSERT INTO players VALUES ('Papa', 'Pedro', '22:22:22:22:22:22');
 INSERT INTO players VALUES ('Hermano', 'Julio', '33:33:33:33:33:33');
 ```
 
-# Uso
-El script utiliza el contenido de las variables `SESSION_KEY` para la contraseña del Router y `MYSQL_PASSWORD` para la contraseña de MySQL con el fín de poder efectuar autenticaciones de manera más segura. Podremos configurar estas variables en el fichero `management/envSetup.bat` o configurarlas por terminal tanto en Windows como en Linux:
+These SQL commands are contained in the file `database_structure.sql`.
+
+# Use
+The script uses the content of the variables `SESSION_KEY` for the Router password and `MYSQL_PASSWORD` for the MySQL password in order to perform authentications in a more secure way. These variables can be configured in the `management/envSetup.bat` file or configured via terminal on both Windows and Linux:
 
 **WINDOWS**
 ```CMD
@@ -77,25 +79,24 @@ export SESSION_KEY="myRouterPassword"
 export MYSQL_PASSWORD="mysqlPassword"
 ```
 
-Con las variables configuradas, ejecutaremos el script con *Python3*.
+With the variables configured, we will run the script with *Python3*.
 
 ```CMD
 python3 InterfaceConnect.py
 ```
 
-En caso de que nadie se haya conectado después de la última ejecución del script nos aparecerá el siguiente output:
+If no one has connected after the last execution of the script, the following output will appear:
 
-![image](https://github.com/user-attachments/assets/ce422612-f6f3-452d-a4e7-d74406ff1dc0)
+![image](https://github.com/user-attachments/assets/18fe4c1f-6721-414e-9252-4b74847a8ca9)
 
-Si alguien ha ganado puntos, el output cambiará de la siguiente manera:
+If someone has earned points, the output will change as follows:
 
 ![image](https://github.com/user-attachments/assets/3048b2cb-6417-4d09-8495-4ff6d356cdbb)
 
-# Clasificación
-Para ver la clasificación de puntos, deberemos de ejecutar el script `leaderboard\generateLeaderBoard.py` para generar el fichero `leaderboard.html` en el cual visualizaremos la clasificación.
+# Ranking
+To see the points ranking, we must run the script `leaderboard\GenerateLeaderBoard.py` to generate the file `leaderboard.html` in which we will visualize the ranking:
 
 ![image](https://github.com/user-attachments/assets/48c0e6b9-6a09-493d-9fee-d5fa2765f4ca)
-
 
 ## Key Components:
 The key components of this tool are:
