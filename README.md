@@ -30,7 +30,8 @@ By default, we will create the user *wifipointsmanager* that will be in charge o
 
 ```sql
 -- Change the user name and password to the one you want --
-CREATE USER wifipointsmanager IDENTIFIED BY 'PASSWORD' GRANT ALL ON wifipoints.*;
+CREATE USER wifipointsmanager IDENTIFIED BY 'PASSWORD';
+GRANT ALL ON wifipoints.* TO wifipointsmanager;
 ```
 
 Finally, we will generate the corresponding tables in the `wifipoints` database.
@@ -62,10 +63,10 @@ INSERT INTO players VALUES ('Dad', 'James', '22:22:22:22:22:22');
 INSERT INTO players VALUES ('Brother', 'Michael', '33:33:33:33:33:33');
 ```
 
-These SQL commands are contained in the file `database_structure.sql`.
+These SQL commands are contained in the file `database\structure.sql`.
 
 # Use
-The script uses the content of the variables `SESSION_KEY` for the Router password and `MYSQL_PASSWORD` for the MySQL password in order to perform authentications in a more secure way. These variables can be configured in the `management/envSetup.bat` file or configured via terminal on both Windows and Linux:
+The script uses the content of the variables `SESSION_KEY` for the Router password and `MYSQL_PASSWORD` for the MySQL password in order to perform authentications in a more secure way. These variables can be configured in the `management\envSetup.bat` file or configured via terminal on both Windows and Linux:
 
 **WINDOWS**
 ```CMD
