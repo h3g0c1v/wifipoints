@@ -1,21 +1,26 @@
--- BD --
+-- DB --
 CREATE DATABASE wifipoints;
 USE wifipoints;
 
--- Cambiar el nombre de usuario y contraseña al que queramos --
-CREATE USER wifipointsmanager IDENTIFIED BY 'CONTRASEÑA' GRANT ALL ON wifipoints.*;
+-- Change the user name and password to the one you want --
+CREATE USER wifipointsmanager IDENTIFIED BY 'PASSWORD' GRANT ALL ON wifipoints.*;
 
--- Tabla donde estarán los jugadores --
+-- Table where the players will be --
 CREATE TABLE players (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
-    name VARCHAR(11),
-    mac VARCHAR(17) NOT NULL
+	name VARCHAR(11),
+	mac VARCHAR(17) NOT NULL
 );
 
--- Tabla que almancena los puntos de los jugadores --
+-- Table storing the players' points --
 CREATE TABLE players_points (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
 	name VARCHAR(11),
 	points INT(4) NOT NULL,
-    FOREIGN KEY (nick) REFERENCES players(nick)
+	FOREIGN KEY (nick) REFERENCES players(nick)
 );
+
+-- Inserting sample data --
+INSERT INTO players VALUES ('Mom', 'Mary', '11:11:11:11:11:11');
+INSERT INTO players VALUES ('Dad', 'James', '22:22:22:22:22:22');
+INSERT INTO players VALUES ('Brother', 'Michael', '33:33:33:33:33:33');
