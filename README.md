@@ -85,6 +85,10 @@ With the variables configured, we will run the script with *Python3*.
 python3 InterfaceConnect.py
 ```
 
+If this is the first time you run the script, the result will be as follows. Afterwards, you can run the script whenever you want to check if someone has won a point.
+
+![image](https://github.com/user-attachments/assets/8eef03a9-053a-4f08-926d-5a0bfb8ed1a8)
+
 If no one has connected after the last execution of the script, the following output will appear:
 
 ![image](https://github.com/user-attachments/assets/18fe4c1f-6721-414e-9252-4b74847a8ca9)
