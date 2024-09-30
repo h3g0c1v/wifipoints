@@ -16,7 +16,7 @@ netmapUrl = "http://192.168.1.1/networkmap.html"
 
 # Handler - Ctrl + C
 def def_handler(sig, frame):
-    print("\n[+] Saliendo ...\n")
+    print("\n[+] Leaving ...\n")
     exit(1)
 
 signal.signal(signal.SIGINT, def_handler)
@@ -29,7 +29,7 @@ def readFile (filePath):
 
 # Autenticandonos en el portal del router
 def portalConnect():
-    print("[i] Autenticandose ...")
+    print("[i] Authenticating ...")
     
     autenticationData = {
         "sessionKey": os.getenv("SESSION_KEY"),
@@ -44,10 +44,10 @@ def portalConnect():
         # En caso de que la auth sea exitosa nos responderá con la siguiente respuesta:
         # top.location = /mhs.html
         if "/mhs.html" in r.text:
-            print("[+] Autenticación Exitosa!")
+            print("[+] Autentication Successful!")
             return 0
         else:
-            print("[!] Autenticación Fallida!")
+            print("[!] Autentication Failed!")
             exit(1)
     except Exception as e:
         print(f"[!] ERROR: {e}")
@@ -55,7 +55,7 @@ def portalConnect():
 
 # Obteniendo el mapa de red sobre networkmap.html
 def getNetworkMap():
-    print("[i] Obteniendo el mapa de red ...")
+    print("[i] Getting the network map ...")
     
     r = s.get(netmapUrl)
     return (r)
@@ -97,7 +97,7 @@ def parseDevices(r, filePath):
 
 # Comparamos los dispositivos que antes estaban conectados con los nuevos que puede haber
 def compareDevices():
-    print("[i] Comprobando si hay nuevos dispositivos ...\n")
+    print("[i] Checking for new devices ...\n")
     
     # Definiendo los ficheros a comparar
     principalFile = "devices_info.txt"        # Fichero con el que compararemos la nueva información
@@ -135,9 +135,9 @@ def compareDevices():
             if (puntos == "si"):
                 pass
             else:
-                print("[i] Nadie ha ganado puntos")
+                print("[i] No one has earned points")
     else:
-        print("[i] Nadie ha ganado puntos")
+        print("[i] No one has earned points")
     
     return 0
 
@@ -187,19 +187,19 @@ def addPoints(device, puntos, conn):
             # Insertamos el primer punto del jugador y mostramos un mensaje
             cursor.execute('INSERT INTO players_points VALUES (\"' + deviceNick + '\", \"' + deviceName + '\", 1);')
             conn.commit()
-            print("[+] " + deviceNick + " ha obtenido su primer punto")
+            print("[+] " + deviceNick + " has earned his/her first point!")
         else:            
             # UPDATE players_points SET points = points + 1 WHERE nick = (SELECT nick FROM players WHERE mac = 'XX:XX:XX:XX:XX:XX');
             cursor.execute('UPDATE players_points SET points = points + 1 WHERE nick = (SELECT nick FROM players WHERE mac=\"' + device[2] + '\");')
             conn.commit()
 
-            print("[+] " + deviceNick + " ha ganado un punto más")
+            print("[+] " + deviceNick + " has earned another point!")
 
     return(puntos)
 
 # Efectuando backup de los archivos generados
 def backupsFiles():
-    print("\n[i] Realizando backup ...")
+    print("\n[i] Performing backup ...")
     date = datetime.now().strftime("%Y%m%d") # Fecha con AÑOMESDÍA
     dateHours = datetime.now().strftime("%Y%m%d_%H%M%S") # Fecha con AÑOMESDÍA_HORAMESSEGUNDO
     
@@ -215,7 +215,7 @@ def backupsFiles():
     os.rename("devices_info.txt", completeNamePath + completeFileName) # Moviendo el fichero de devices a backups
     os.rename("compare_devices_info.txt", "devices_info.txt") # Quedandonos con el mapa de red actual
 
-    print("[+] Backup guardado en ..\\backups")
+    print("[+] Backup saved in ..\\backups")
 
 
 if __name__ == '__main__':
@@ -223,9 +223,9 @@ if __name__ == '__main__':
     # Comprobando si las variables de entorno SESSION_KEY y/o MYSQL_PASSWORD están configuradas
     if (not os.getenv("SESSION_KEY") or (not os.getenv("MYSQL_PASSWORD"))):
         if (not os.getenv("SESSION_KEY")): # Comprobando si está definida la password para el acceso al router en la variable de entorno SESSION_KEY
-            print("[!] Configura la variable de entorno SESSION_KEY con la password del router")
+            print("[!] Set the environment variable SESSION_KEY with the router password")
         if (not os.getenv("MYSQL_PASSWORD")): # Comprobando si está definida la password para el acceso al router en la variable de entorno MYSQL_PASSWORD
-            print("[!] Configura la variable de entorno MYSQL_PASSWORD con la password de acceso a MySQL")
+            print("[!] Set the environment variable MYSQL_PASSWORD with the MySQL access password")
 
         exit(1)
 
@@ -241,5 +241,5 @@ if __name__ == '__main__':
     else: # Al ser la primera vez que se ejecuta necesitamos quedarnos con la información del mapa de red actual
         nameList, ipList, macList = parseDevices(r, 'devices_info.txt') # Nos quedamos con la lista de nombres, IPs y MACs de los dispositivos de la red
         
-        print("[+] El mapa de red se ha guardado en el fichero devices_info.txt")
-        print("[i] Por favor, vuelva a ejecutarlo para ver si hay alguien que pueda ganar 1 punto más!")
+        print("[+] The network map has been saved in the file devices_info.txt")
+        print("[i] Please run it again to see if there is anyone who can earn points.!")
