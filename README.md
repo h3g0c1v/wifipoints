@@ -57,9 +57,9 @@ On the `players` table we must enter the data of the players that will participa
 
 ```sql
 -- Inserting sample data --
-INSERT INTO players VALUES ('Mama', 'Marta', '11:11:11:11:11:11');
-INSERT INTO players VALUES ('Papa', 'Pedro', '22:22:22:22:22:22');
-INSERT INTO players VALUES ('Hermano', 'Julio', '33:33:33:33:33:33');
+INSERT INTO players VALUES ('Mom', 'Mary', '11:11:11:11:11:11');
+INSERT INTO players VALUES ('Dad', 'James', '22:22:22:22:22:22');
+INSERT INTO players VALUES ('Brother', 'Michael', '33:33:33:33:33:33');
 ```
 
 These SQL commands are contained in the file `database_structure.sql`.
