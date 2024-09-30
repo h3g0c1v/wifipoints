@@ -39,8 +39,8 @@ Finally, we will generate the corresponding tables in the `wifipoints` database.
 -- Table where the players will be --
 CREATE TABLE players (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
-    name VARCHAR(11),
-    mac VARCHAR(17) NOT NULL
+	name VARCHAR(11),
+	mac VARCHAR(17) NOT NULL
 );
 ```
 ```sql
@@ -49,7 +49,7 @@ CREATE TABLE players_points (
 	nick VARCHAR(11) NOT NULL PRIMARY KEY,
 	name VARCHAR(11),
 	points INT(4) NOT NULL,
-    FOREIGN KEY (nick) REFERENCES players(nick)
+	FOREIGN KEY (nick) REFERENCES players(nick)
 );
 ```
 
@@ -96,7 +96,7 @@ If someone has earned points, the output will change as follows:
 # Ranking
 To see the points ranking, we must run the script `leaderboard\GenerateLeaderBoard.py` to generate the file `leaderboard.html` in which we will visualize the ranking:
 
-![image](https://github.com/user-attachments/assets/48c0e6b9-6a09-493d-9fee-d5fa2765f4ca)
+![image](https://github.com/user-attachments/assets/29a4d990-f009-4275-909f-379815be6305)
 
 ## Key Components:
 The key components of this tool are:
