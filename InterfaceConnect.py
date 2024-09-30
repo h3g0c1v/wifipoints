@@ -125,7 +125,7 @@ def compareDevices():
         # Configurando la conexión a la BD
         conn = mysql.connector.connect( 
             host='localhost',
-            user='hector',
+            user='wifipointsmanager',
             password=os.getenv("MYSQL_PASSWORD"),
             database='wifipoints'
         )
