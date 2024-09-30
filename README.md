@@ -63,7 +63,7 @@ INSERT INTO players VALUES ('Hermano', 'Julio', '33:33:33:33:33:33');
 ```
 
 # Uso
-El script utiliza el contenido de las variables `SESSION_KEY` para la contraseña del Router y `MYSQL_PASSWORD` para la contraseña de MySQL con el fín de poder efectuar autenticaciones de manera más segura. Podremos configurar estas variables en el fichero `envSetup.bat` o configurarlas por terminal tanto en Windows como en Linux:
+El script utiliza el contenido de las variables `SESSION_KEY` para la contraseña del Router y `MYSQL_PASSWORD` para la contraseña de MySQL con el fín de poder efectuar autenticaciones de manera más segura. Podremos configurar estas variables en el fichero `management/envSetup.bat` o configurarlas por terminal tanto en Windows como en Linux:
 
 **WINDOWS**
 ```CMD
@@ -84,8 +84,9 @@ python3 InterfaceConnect.py
 ```
 
 # Clasificación
-Para ver la clasificación de puntos, podremos mostrar el fichero `clasification.php` desde el navegador con el interprete de PHP activado.
+Para ver la clasificación de puntos, deberemos de ejecutar el script `leaderboard\generateLeaderBoard.py` para generar el fichero `leaderboard.html` en el cual visualizaremos la clasificación.
 
+![image](https://github.com/user-attachments/assets/48c0e6b9-6a09-493d-9fee-d5fa2765f4ca)
 
 
 ## Key Components:
