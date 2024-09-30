@@ -4,7 +4,7 @@ REM Script para comprimir todos los backups creados en el directorio backups/
 setlocal enabledelayedexpansion
 
 REM Configurando la ruta de backups
-set "backup_dir=..\backups"
+set "backup_dir=..\..\backups"
 
 REM Ruta al ejecutable de WinRAR
 set "winrar_path=C:\Program Files\WinRAR\WinRAR.exe"
