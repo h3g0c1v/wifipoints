@@ -105,6 +105,8 @@ In order to avoid storing multiple files in the backup folders, there is a `.bat
 management\compressBackups.bat
 ```
 
+![image](https://github.com/user-attachments/assets/59a546fb-db8d-43c6-a42f-194c7cea7d56)
+
 # Ranking
 To see the points ranking, we must run the script `leaderboard\GenerateLeaderBoard.py` to generate the file `leaderboard.html` in which we will visualize the ranking:
 
