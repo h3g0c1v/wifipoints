@@ -1,8 +1,6 @@
-# Primero: Conexión al portal Wi-FI - http://192.168.1.1/login-login.cgi
-# Segundo: Obtener el Mapa de Red - http://192.168.1.1/networkmap.html
-# Tercero: Parsear la información (Name, IP y MAC)
-
-# NO COMPARA EN TIEMPO REAL ES DECIR SI ME DESCONECTO DEL WIFI, LO EJECUTO Y ME VUELVO A EJECUTAR, CUANDO LO EJECUTE NO ME DA 1 PUNTO
+# Author: h3g0c1v
+# This tool is a Python3 script designed to reward users who connect to a Wi-Fi network by automatically granting points based on their interactions with the network.
+# The system detects and registers connected devices, associating each device with the corresponding player and updating their score according to their activity on the network.
 
 # Librerías
 from bs4 import BeautifulSoup
