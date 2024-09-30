@@ -83,6 +83,14 @@ Con las variables configuradas, ejecutaremos el script con *Python3*.
 python3 InterfaceConnect.py
 ```
 
+En caso de que nadie se haya conectado después de la última ejecución del script nos aparecerá el siguiente output:
+
+![image](https://github.com/user-attachments/assets/ce422612-f6f3-452d-a4e7-d74406ff1dc0)
+
+Si alguien ha ganado puntos, el output cambiará de la siguiente manera:
+
+![image](https://github.com/user-attachments/assets/3048b2cb-6417-4d09-8495-4ff6d356cdbb)
+
 # Clasificación
 Para ver la clasificación de puntos, deberemos de ejecutar el script `leaderboard\generateLeaderBoard.py` para generar el fichero `leaderboard.html` en el cual visualizaremos la clasificación.
 
