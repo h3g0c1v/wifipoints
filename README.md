@@ -30,7 +30,7 @@ By default, we will create the user *wifipointsmanager* that will be in charge o
 
 ```sql
 -- Change the user name and password to the one you want --
-CREATE USER wifipointsmanager IDENTIFIED BY 'CONTRASEÑA' GRANT ALL ON wifipoints.*;
+CREATE USER wifipointsmanager IDENTIFIED BY 'PASSWORD' GRANT ALL ON wifipoints.*;
 ```
 
 Finally, we will generate the corresponding tables in the `wifipoints` database.
